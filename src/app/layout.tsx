@@ -5,6 +5,7 @@ import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
 import { CartProvider } from "@/contexts/CartContext";
 import { Toaster } from "@/components/ui/sonner";
+import { Toaster as RadixToaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Campus Bites - Madras Engineering College",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <CartProvider>
           {children}
           <Toaster />
+          <RadixToaster />
         </CartProvider>
         <VisualEditsMessenger />
       </body>

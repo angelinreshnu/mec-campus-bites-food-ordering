@@ -33,6 +33,9 @@ export default function PreOrderPage() {
 
   const userId = "student1";
 
+  // Add safety check for items
+  const cartItems = items || [];
+
   useEffect(() => {
     fetchOrders();
     fetchCanteenStatus();
@@ -70,7 +73,7 @@ export default function PreOrderPage() {
   };
 
   const handlePlaceOrder = async () => {
-    if (items.length === 0) {
+    if (cartItems.length === 0) {
       toast({
         title: "Error",
         description: "Your cart is empty",
@@ -90,7 +93,7 @@ export default function PreOrderPage() {
 
     setPlacing(true);
     try {
-      const orderItems = items.map(item => ({
+      const orderItems = cartItems.map(item => ({
         menuItemId: item.id,
         menuItemName: item.name,
         quantity: item.quantity,
@@ -202,7 +205,7 @@ export default function PreOrderPage() {
                 <CardTitle>Place Your Pre-Order</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {items.length === 0 ? (
+                {cartItems.length === 0 ? (
                   <div className="text-center py-8">
                     <Package className="w-12 h-12 mx-auto text-muted-foreground mb-2" />
                     <p className="text-muted-foreground mb-4">Your cart is empty</p>
@@ -214,7 +217,7 @@ export default function PreOrderPage() {
                   <>
                     <div className="space-y-2">
                       <h4 className="font-semibold">Your Items:</h4>
-                      {items.map((item) => (
+                      {cartItems.map((item) => (
                         <div key={item.id} className="flex justify-between text-sm">
                           <span>{item.name} x{item.quantity}</span>
                           <span>₹{(item.price * item.quantity).toFixed(2)}</span>
