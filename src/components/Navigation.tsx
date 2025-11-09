@@ -15,13 +15,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Menu, ShoppingCart, User, LogOut } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useCart } from "@/contexts/CartContext";
 
 export default function Navigation() {
   const router = useRouter();
+  const { getTotalItems } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState("");
-  const cartItemsCount = 0; // Will be dynamic later
+  const cartItemsCount = getTotalItems();
 
   useEffect(() => {
     // Check login state
