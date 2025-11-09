@@ -9,52 +9,52 @@ import { Coffee, Sun, Moon, Clock, Star, Zap } from "lucide-react";
 
 export default function Home() {
   const mealTimes = [
-    {
-      icon: Coffee,
-      title: "Breakfast",
-      time: "6:00 AM - 10:00 AM",
-      description: "Start your day with fresh Idli, Dosa, and more South Indian delights",
-      image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc",
-      href: "/menu?category=breakfast",
-      gradient: "from-orange-500 to-yellow-500",
-    },
-    {
-      icon: Sun,
-      title: "Lunch",
-      time: "12:00 PM - 3:00 PM",
-      description: "Enjoy hearty Meals, Biryani, and delicious rice varieties",
-      image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8",
-      href: "/menu?category=lunch",
-      gradient: "from-red-500 to-pink-500",
-    },
-    {
-      icon: Moon,
-      title: "Dinner",
-      time: "6:00 PM - 10:00 PM",
-      description: "Wind down with light Dosa varieties and comfort food",
-      image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976",
-      href: "/menu?category=dinner",
-      gradient: "from-purple-500 to-indigo-500",
-    },
-  ];
+  {
+    icon: Coffee,
+    title: "Breakfast",
+    time: "6:00 AM - 10:00 AM",
+    description: "Start your day with fresh Idli, Dosa, and more South Indian delights",
+    image: "https://images.unsplash.com/photo-1589301760014-d929f3979dbc",
+    href: "/menu?category=breakfast",
+    gradient: "from-orange-500 to-yellow-500"
+  },
+  {
+    icon: Sun,
+    title: "Lunch",
+    time: "12:00 PM - 3:00 PM",
+    description: "Enjoy hearty Meals, Biryani, and delicious rice varieties",
+    image: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8",
+    href: "/menu?category=lunch",
+    gradient: "from-red-500 to-pink-500"
+  },
+  {
+    icon: Moon,
+    title: "Dinner",
+    time: "6:00 PM - 10:00 PM",
+    description: "Wind down with light Dosa varieties and comfort food",
+    image: "https://images.unsplash.com/photo-1668236543090-82eba5ee5976",
+    href: "/menu?category=dinner",
+    gradient: "from-purple-500 to-indigo-500"
+  }];
+
 
   const features = [
-    {
-      icon: Clock,
-      title: "Quick Orders",
-      description: "Order in advance and skip the queue",
-    },
-    {
-      icon: Star,
-      title: "Fresh & Authentic",
-      description: "Traditional South Indian recipes",
-    },
-    {
-      icon: Zap,
-      title: "Instant Updates",
-      description: "Real-time order status notifications",
-    },
-  ];
+  {
+    icon: Clock,
+    title: "Quick Orders",
+    description: "Order in advance and skip the queue"
+  },
+  {
+    icon: Star,
+    title: "Fresh & Authentic",
+    description: "Traditional South Indian recipes"
+  },
+  {
+    icon: Zap,
+    title: "Instant Updates",
+    description: "Real-time order status notifications"
+  }];
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-accent/20">
@@ -104,10 +104,10 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="container px-4 py-12">
+      <section className="container px-4 py-12 !w-full !h-[267px] !max-w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {features.map((feature, index) => (
-            <Card key={index} className="border-2 hover:shadow-lg transition-shadow">
+          {features.map((feature, index) =>
+          <Card key={index} className="border-2 hover:shadow-lg transition-shadow">
               <CardContent className="pt-6 text-center space-y-3">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10">
                   <feature.icon className="w-6 h-6 text-primary" />
@@ -116,7 +116,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground">{feature.description}</p>
               </CardContent>
             </Card>
-          ))}
+          )}
         </div>
       </section>
 
@@ -128,15 +128,15 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {mealTimes.map((meal, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-2">
+          {mealTimes.map((meal, index) =>
+          <Card key={index} className="overflow-hidden hover:shadow-2xl transition-all duration-300 group border-2">
               <div className="relative h-48 overflow-hidden">
                 <Image
-                  src={meal.image}
-                  alt={meal.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                />
+                src={meal.image}
+                alt={meal.title}
+                fill
+                className="object-cover group-hover:scale-110 transition-transform duration-300" />
+
                 <div className={`absolute inset-0 bg-gradient-to-t ${meal.gradient} opacity-60`} />
                 <div className="absolute top-4 right-4">
                   <div className="bg-white/90 backdrop-blur-sm rounded-full p-3">
@@ -158,7 +158,7 @@ export default function Home() {
                 </Button>
               </CardContent>
             </Card>
-          ))}
+          )}
         </div>
       </section>
 
@@ -185,6 +185,6 @@ export default function Home() {
           <p>&copy; 2024 Campus Bites - Madras Engineering College. All rights reserved.</p>
         </div>
       </footer>
-    </div>
-  );
+    </div>);
+
 }
