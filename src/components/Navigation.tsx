@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, ShoppingCart, User, LogOut } from "lucide-react";
+import { Menu, ShoppingCart, User, LogOut, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/contexts/CartContext";
 
@@ -47,6 +47,19 @@ export default function Navigation() {
     { href: "/about", label: "About" },
   ];
 
+  const featureLinks = [
+    { href: "/smart-delivery", label: "Smart Delivery", icon: "🕐" },
+    { href: "/pre-order", label: "Pre-Order", icon: "⏱️" },
+    { href: "/group-order", label: "Group Order", icon: "👥" },
+    { href: "/wallet", label: "Wallet", icon: "💰" },
+    { href: "/hostel-orders", label: "Night Orders", icon: "🌙" },
+    { href: "/meal-suggestor", label: "Meal Suggestor", icon: "🥗" },
+    { href: "/food-wall", label: "Food Wall", icon: "📸" },
+    { href: "/leaderboard", label: "Leaderboard", icon: "🏆" },
+    { href: "/ai-recommender", label: "AI Recommender", icon: "🤖" },
+    { href: "/help-board", label: "Help Board", icon: "📋" },
+  ];
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
@@ -74,6 +87,28 @@ export default function Navigation() {
               {link.label}
             </Link>
           ))}
+          
+          {/* Features Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="gap-2">
+                <Sparkles className="h-4 w-4" />
+                Features
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>Campus Bites 2.0</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {featureLinks.map((feature) => (
+                <DropdownMenuItem key={feature.href} asChild>
+                  <Link href={feature.href} className="cursor-pointer">
+                    <span className="mr-2">{feature.icon}</span>
+                    {feature.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         {/* Right Side Actions */}
@@ -128,7 +163,7 @@ export default function Navigation() {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64">
+            <SheetContent side="right" className="w-64 overflow-y-auto">
               <div className="flex flex-col space-y-4 mt-8">
                 {navLinks.map((link) => (
                   <Link
@@ -140,6 +175,25 @@ export default function Navigation() {
                     {link.label}
                   </Link>
                 ))}
+                
+                <div className="border-t pt-4">
+                  <p className="text-sm font-semibold mb-2 flex items-center gap-2">
+                    <Sparkles className="h-4 w-4" />
+                    New Features
+                  </p>
+                  {featureLinks.map((feature) => (
+                    <Link
+                      key={feature.href}
+                      href={feature.href}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center space-x-2 text-sm py-2 transition-colors hover:text-primary"
+                    >
+                      <span>{feature.icon}</span>
+                      <span>{feature.label}</span>
+                    </Link>
+                  ))}
+                </div>
+                
                 <div className="border-t pt-4">
                   {isLoggedIn ? (
                     <>
